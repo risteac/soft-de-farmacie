@@ -1,4 +1,6 @@
-# Nu primesc notă pentru că nu am pus titlu și descriere
+# Software management afacere, Farmacie
+
+Acest proiect, reprezinta o temptativa de a automatiza (desi, in multe cazuri ce privesc afacerile, aceste aspecte sunt deja automatizate) cateva aspecte ce tin de managementul unei afaceri, momentan exemplul se muleaza pe idea unei farmacii, si reprezinta decat partea de inventar a acesteia, dar in viitor, va contine cod ce se ocupa de statistici, angajati, etc.
 
 ### Folosiți template-ul corespunzător grupei voastre!
 
