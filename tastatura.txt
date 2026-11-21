@@ -1,2 +1,51 @@
+:memory:
+Farmacia CI Test
+1
+Nurofen Forte
+COMPRIMATE
+25.00
+0
+0
+1
+Augmentin 1g
+0
+48.00
+1
+50.0
+2
+LOT-NUR-01
+1
+1
+10
+2027-05-15
+0
+2
+LOT-AUG-01
+1
+2
 5
-11 22 33 44 55
+2027-08-20
+0
+5
+7
+C001
+Maria Popescu
+200.00
+1
+1
+10.0
+9
+C001
+1
+1
+2
+9
+C001
+1
+2
+1
+11
+C001
+5
+12
+0
