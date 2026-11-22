@@ -253,16 +253,16 @@ public:
     bool getNecesitaRetetaMedicala() const { return necesitaRetetaMedicala; }
     double getAcoperireDeCnas() const { return acoperireDeCnas; }
 
-    void aplicaReducere(double reducere) {
+    /*void aplicaReducere(double reducere) {
         if (reducere < 0.0 || reducere > 100.0) {
             throw std::invalid_argument("Reducerea trebuie sa fie intre 0% si 100%!");
         }
         pret *= (1.0 - reducere / 100.0);
-    }
+    } momentan neutilizat*/
 
-    void aplicaAcoperireCnas() {
+    /*void aplicaAcoperireCnas() {
         pret *= (1.0 - acoperireDeCnas / 100.0);
-    }
+    } momentan neutilizat*/
 
     double calculeazaPretFinal(bool esteAsiguratCnas, double reducereProcent = 0.0) const {
         if (reducereProcent < 0.0 || reducereProcent > 100.0) {
@@ -278,9 +278,9 @@ public:
         return std::round(pretFinal * 100.0) / 100.0;
     }
 
-    bool operator==(const Medicament& m) const {
+    /*bool operator==(const Medicament& m) const {
         return nume == m.nume && tip == m.tip;
-    }
+    } momentan neutilizat*/
 
     friend std::ostream& operator<<(std::ostream& os, const Medicament& m) {
         os << m.nume << " [" << tipMedicamentToString(m.tip) << "] | "
@@ -317,14 +317,14 @@ public:
         }
     }
 
-    void adaugaStoc(int cantitateAdaugata) {
+    /*void adaugaStoc(int cantitateAdaugata) {
         if (cantitateAdaugata <= 0) {
             throw std::invalid_argument("Cantitatea adaugata trebuie sa fie strict pozitiva!");
         }
         this->cantitate += cantitateAdaugata;
-    }
+    } momentan neutilizata */
 
-    void retrageStoc(int cantitateRetrasa) {
+    /*void retrageStoc(int cantitateRetrasa) {
         if (cantitateRetrasa <= 0) {
             throw std::invalid_argument("Cantitatea retrasa trebuie sa fie strict pozitiva!");
         }
@@ -332,16 +332,16 @@ public:
             throw std::runtime_error("Stoc insuficient in lotul " + numarLot + "!");
         }
         this->cantitate -= cantitateRetrasa;
-    }
+    } momentan neutilizat*/
 
-    void retrageLot() { this->retras = true; }
-    bool esteStocEpuizat() const { return cantitate == 0; }
+    /*void retrageLot() { this->retras = true; }
+    bool esteStocEpuizat() const { return cantitate == 0; } momentan neutilizat*/
 
     bool esteExpirat(const std::chrono::year_month_day& dataCurenta = dataCurentaSistema()) const {
         return this->dataExpirare < dataCurenta;
     }
 
-    bool expiraInUrmatoarele(int zile,
+    /*bool expiraInUrmatoarele(int zile,
                              const std::chrono::year_month_day& dataCurenta = dataCurentaSistema()) const {
         if (zile < 0) {
             throw std::invalid_argument("Numarul de zile trebuie sa fie pozitiv!");
@@ -350,19 +350,19 @@ public:
         std::chrono::sys_days limita = azi + std::chrono::days{zile};
         std::chrono::sys_days expirare = std::chrono::sys_days{this->dataExpirare};
         return expirare >= azi && expirare <= limita;
-    }
+    }momentan neutilizat */
 
-    bool poateFiVandut(const std::chrono::year_month_day& dataCurenta = dataCurentaSistema()) const {
+    /*bool poateFiVandut(const std::chrono::year_month_day& dataCurenta = dataCurentaSistema()) const {
         return !esteExpirat(dataCurenta) && !retras && cantitate > 0;
-    }
+    } momentan neutilizat */
 
-    bool esteDisponibil(int cantitateCeruta,
+    /*bool esteDisponibil(int cantitateCeruta,
                         const std::chrono::year_month_day& dataCurenta = dataCurentaSistema()) const {
         if (cantitateCeruta <= 0) {
             throw std::invalid_argument("Cantitatea verificata trebuie sa fie strict pozitiva!");
         }
         return poateFiVandut(dataCurenta) && (this->cantitate >= cantitateCeruta);
-    }
+    } momentan neutilizat*/
 
     const std::string& getNumarLot() const { return numarLot; }
     int getCantitate() const { return cantitate; }
@@ -370,7 +370,7 @@ public:
     const Medicament& getMedicament() const { return medicament; }
     bool esteRetras() const { return retras; }
 
-    bool operator==(const Lot& l2) const { return numarLot == l2.numarLot; }
+    /*bool operator==(const Lot& l2) const { return numarLot == l2.numarLot; } momentan neutilizat*/
 
     friend std::ostream& operator<<(std::ostream& os, const Lot& l) {
         os << "Lot #" << l.numarLot << " | " << l.medicament.getNume()
@@ -548,7 +548,6 @@ public:
     BazaDateSQLite(const BazaDateSQLite&) = delete; //asan, de ce ai vrea sa copiezi pointerul unei baze de date oricum???
     BazaDateSQLite& operator=(const BazaDateSQLite&) = delete;
 
-    sqlite3* raw() const { return db; } //StatementSQLite are nevoie de asta
     const std::string& getCaleFisier() const { return caleFisier; } //self-explanatory
 
     // functii simple, care nu returneaza
@@ -860,11 +859,11 @@ public:
     bool esteGol() const { return produse.empty(); }
     const std::vector<ItemCos>& getProduse() const { return produse; }
 
-    double calculeazaTotalBrut() const {
+    /*double calculeazaTotalBrut() const {
         double total = 0.0;
         for (const auto& item : produse) total += item.medicament.getPret() * item.cantitate;
         return total;
-    }
+    } momentan neutilizat */
 
     double calculeazaTotalFinal(bool esteAsiguratCnas, double reducereFidelitate = 0.0) const {
         double total = 0.0;
@@ -1197,9 +1196,9 @@ public:
     }
 
     int getNumarBon() const { return numarBon; }
-    const std::string& getNumeClient() const { return numeClient; }
+    /*const std::string& getNumeClient() const { return numeClient; } momentan neutilizata*/
     std::size_t getNumarLinii() const { return numarLinii; }
-    double getTotalDePlata() const { return totalDePlata; }
+    /*double getTotalDePlata() const { return totalDePlata; } momentan neutilizata*/
 
     friend std::ostream& operator<<(std::ostream& os, const BonFiscal& b) {
         os << "================ BON FISCAL #" << b.numarBon << " ================\n"
@@ -1398,6 +1397,7 @@ void afiseazaMeniuPrincipal() {
               << " 10. Actualizeaza reteta / bugetul unui client\n"
               << " 11. Proceseaza vanzare la casa de marcat (Checkout)\n"
               << " 12. Afiseaza raportul casei de marcat\n"
+              << " 13. Afiseaza catalogul de medicamente\n"
               << "  0. Iesire\n"
               << "------------------------------------------------------\n";
 }
@@ -1417,7 +1417,7 @@ int main() {
         bool ruleaza = true;
         while (ruleaza) {
             afiseazaMeniuPrincipal();
-            int optiune = citesteInt("Alege optiunea: ", 0, 12);
+            int optiune = citesteInt("Alege optiunea: ", 0, 13);
 
             try {
                 switch (optiune) {
@@ -1593,6 +1593,12 @@ int main() {
 
                     case 12: {
                         std::cout << "\n" << casa << "\n";
+                        break;
+                    }
+                    case 13: {
+                        for (const auto& mc : db.getToateMedicamentele()){
+                            std::cout << "\n" << mc << "\n";
+                        }
                         break;
                     }
                 }
