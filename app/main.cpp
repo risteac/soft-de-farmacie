@@ -445,7 +445,7 @@ public:
 };
 
 struct MedicamentCatalog {
-    int id;
+    int id = 0;
     Medicament medicament;
 
     friend std::ostream& operator<<(std::ostream& os, const MedicamentCatalog& mc) {
@@ -835,7 +835,7 @@ public:
 
 struct ItemCos {
     Medicament medicament;
-    int cantitate;
+    int cantitate = 0;
 
     friend std::ostream& operator<<(std::ostream& os, const ItemCos& item) {
         os << item.medicament.getNume()
@@ -1100,11 +1100,11 @@ public:
 
 struct LinieBon {
     std::string numeMedicament;
-    TipMedicament tip;
-    int cantitate;
-    double pretUnitarCatalog;
-    double pretUnitarFinal;
-    double subtotal;
+    TipMedicament tip = TipMedicament::COMPRIMATE;
+    int cantitate = 0;
+    double pretUnitarCatalog = 0.0;
+    double pretUnitarFinal = 0.0;
+    double subtotal = 0.0;
 
     friend std::ostream& operator<<(std::ostream& os, const LinieBon& l) {
         os << l.numeMedicament << " (" << tipMedicamentToString(l.tip) << "): "
